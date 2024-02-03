@@ -1,0 +1,9 @@
+
+.board {
+    width: 500px;height:500px;background-color: red;
+    position: absolute;top:50%;left:50%;transform: translate(-50%, -50%);
+    display: grid;grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.board > div {
+    border: 1px solid black;width: 48px;height: 48px;
+}

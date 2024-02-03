@@ -1,0 +1,17 @@
+html, body {
+    /*background-image:url('pexels-sanni-sahil-2565919 - Copy (13).jpg'); */
+}
+
+.Name {
+    display: block;text-align: center;font-size: 200%;margin-top: 30px;
+}
+
+.container {
+    display: grid;grid-template-columns: 1fr 1fr 1fr 1fr;width:60%;
+    position: relative;left: 20%;margin-top: 25px;
+}
+
+.container > div {
+    height:120px;border: 2px solid black;margin:5px;border-radius: 5px;
+    text-align: center;
+}
