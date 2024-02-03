@@ -1,0 +1,14 @@
+.nav_bar {
+    background-color: aqua;height: 35px;padding-top: 10px;
+}
+.nav_bar span {
+    float: right;padding-right: 30px;
+}
+
+.main {
+    display: grid;grid-template-columns: 1fr 1fr 1fr;
+}
+.main > div {
+    background-color: lightblue;height: 200px;margin: 5px;
+    position: relative;left:10%;width:80%
+}
