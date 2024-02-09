@@ -1,10 +1,9 @@
-
 var bird = document.getElementById('bird');
-
+var container = document.getElementById('container');
 bird.style.left = '100px';
-bird.style.top = '20%';
-var dx = 1;
-var dy = 1;
+bird.style.top = '100px';
+var dx = 5;
+var dy = 5;
 
 var x = bird.style.left;
 var y = bird.style.top;
@@ -28,33 +27,7 @@ document.addEventListener('keydown', (event) => {
         bird.style.top  = y;
     }
 
-    // y = y.slice(0, -1);
-    // y = Number(y) 
-
-    // if (y > 100) {
-    //     var count2  = 0;
-    //     const aaa = setInterval(() => {
-    //         count2 += 1;
-    //         document.write("Game Over");
-    //         if (count2 > 200) {
-    //             location.reload();
-    //         }
-    //         setTimeout(() => {
-                
-    //         }, );
-    //     }, 20);
-    // }else if (y < 0) {
-    //     var count2  = 0;
-    //     const aab = setInterval(() => {
-    //         count2 += 1;
-    //         document.write("Game Over");
-    //         if (count2 > 200) {
-    //             location.reload();
-    //             clearInterval(aab)
-    //         }
-    //     }, 20);
-    // }
-    // y = y + "%";
+    
 
 });
 
@@ -73,10 +46,10 @@ m2.style.bottom = '0px';
 m3.style.bottom = '0px';
 m4.style.top = '0px';
 
-m1.style.left = '25%';
-m2.style.left = '50%';
-m3.style.left = '75%';
-m4.style.left = '100%';
+m1.style.left = (window.screen.width*0.8)*0.25 + 'px';
+m2.style.left = (window.screen.width*0.8)*0.5 + 'px';
+m3.style.left = (window.screen.width*0.8)*0.75 + 'px';
+m4.style.left = (window.screen.width*0.8) + 'px';
 
 var xx1 = m1.style.left;
 var xx2 = m2.style.left;
@@ -92,29 +65,28 @@ const heights = ['25px', '265px', '140px', '350px'];
 
 function mountains() {
 
-    xx1 = xx1.slice(0, -1);
-    xx2 = xx2.slice(0, -1);
-    xx3 = xx3.slice(0, -1);
-    xx4 = xx4.slice(0, -1);
+    xx1 = xx1.slice(0, -2);
+    xx2 = xx2.slice(0, -2);
+    xx3 = xx3.slice(0, -2);
+    xx4 = xx4.slice(0, -2);
 
-    xx1 = Number(xx1) - dx;
-    xx2 = Number(xx2) - dx;
-    xx3 = Number(xx3) - dx;
-    xx4 = Number(xx4) - dx;
+    xx1 = Number(xx1) - 10;
+    xx2 = Number(xx2) - 10;
+    xx3 = Number(xx3) - 10;
+    xx4 = Number(xx4) - 10;
 
-    xx1 = xx1 + "%";
-    xx2 = xx2 + "%";
-    xx3 = xx3 + "%";
-    xx4 = xx4 + "%";
+    xx1 = xx1 + "px";
+    xx2 = xx2 + "px";
+    xx3 = xx3 + "px";
+    xx4 = xx4 + "px";
 
     m1.style.left = xx1;
     m2.style.left = xx2;
     m3.style.left = xx3;
     m4.style.left = xx4;
 
-    if (Number(xx1.slice(0, -1)) < -5) {
-        console.log(xx1.slice(0, -1))
-        xx1 = '100%';
+    if (Number(xx1.slice(0, -2)) < 0) {
+        xx1 = window.screen.width*0.8 + 'px';
         m1.style.left = xx1;
 
         let height1 = Math.round(Math.random() * 3) + 1;
@@ -123,9 +95,8 @@ function mountains() {
 
         score += 1;
     }
-    if (Number(xx2.slice(0, -1)) < -5) {
-        console.log(xx2.slice(0, -1))
-        xx2 = '100%';
+    if (Number(xx2.slice(0, -2)) < -5) {
+        xx2 = window.screen.width*0.8 + 'px';
         m2.style.left = xx2;
 
         let height1 = Math.round(Math.random() * 3) + 1;
@@ -134,9 +105,8 @@ function mountains() {
 
         score += 1;
     }
-    if (Number(xx3.slice(0, -1)) < -5) {
-        console.log(xx3.slice(0, -1))
-        xx3 = '100%';
+    if (Number(xx3.slice(0, -2)) < -5) {
+        xx3 = window.screen.width*0.8 + 'px';
         m3.style.left = xx3;
 
         let height1 = Math.round(Math.random() * 3) + 1;
@@ -145,9 +115,8 @@ function mountains() {
 
         score += 1;
     }
-    if (Number(xx4.slice(0, -1)) < -5) {
-        console.log(xx4.slice(0, -1))
-        xx4 = '100%';
+    if (Number(xx4.slice(0, -2)) < -5) {
+        xx4 = window.screen.width*0.8 + 'px';
         m4.style.left = xx4;
 
         let height1 = Math.round(Math.random() * 3) + 1;
@@ -174,6 +143,78 @@ function bird_movement() {
 
 }
 
+/////////////////MAIN FUNCTION//////////////////MAIN FUNCTION///////////////MAIN FUNCTION////////
 
-setInterval(bird_movement, 250);
-setInterval(mountains, 75);
+var count33 = 0;
+setInterval(() => {
+    if (count33 % 3 == 0) {
+        bird_movement()
+    }
+    mountains()
+
+    y = y.slice(0, -2);
+    y = Number(y) 
+    //console.log(y, window.screen.height, 'YS');
+
+    /////////////////////////////////BIRD BOUNDARIES//////////////////BIRD BOUNDARIES//////////////////////////////
+    if (y >= (window.screen.height*0.6)) {
+        setTimeout(() => {container.style.backgroundColor = 'red'}, 500)
+        setTimeout(() => {
+            document.write(`<h1>YOU LOSS</h1><h1>Score: ${score}</h1>!!`)
+        }, 1500)
+        setTimeout(() => {
+            location.reload()
+        }, 3000);
+
+    }
+    if (y < 0) {
+        setTimeout(() => {container.style.backgroundColor = 'red'}, 500)
+        setTimeout(() => {
+            document.write(`<h1>YOU LOSS</h1><h1>Score: ${score}</h1>!!`)
+        }, 1500)
+        setTimeout(() => {
+            location.reload()
+        }, 3000);
+    }
+
+    ///////////////COLLUTIONS///////////////////////////COLLUTIONS//////////////////////////
+    if (Number((xx2.slice(0, -2) > 95) && (xx2.slice(0, -2) < 135)) && ((window.screen.height*0.65 - Number(m1.style.height.slice(0, -2))) < y)) {
+        setTimeout(() => {container.style.backgroundColor = 'red'}, 500)
+        setTimeout(() => {
+            document.write(`<h1>YOU LOSS</h1><h1>Score: ${score}</h1>!!`)
+        }, 1500)
+        setTimeout(() => {
+            location.reload()
+        }, 3000);
+    }
+    if (Number((xx2.slice(0, -2) > 95) && (xx2.slice(0, -2) < 135)) && ((window.screen.height*0.65 - Number(m2.style.height.slice(0, -2))) < y)) {
+        setTimeout(() => {container.style.backgroundColor = 'red'}, 500)
+        setTimeout(() => {
+            document.write(`<h1>YOU LOSS</h1><h1>Score: ${score}</h1>!!`)
+        }, 1500)
+        setTimeout(() => {
+            location.reload()
+        }, 3000);
+    }
+    if (Number((xx2.slice(0, -2) > 95) && (xx2.slice(0, -2) < 135)) && ((window.screen.height*0.65 - Number(m3.style.height.slice(0, -2))) < y)) {
+        setTimeout(() => {container.style.backgroundColor = 'red'}, 500)
+        setTimeout(() => {
+            document.write(`<h1>YOU LOSS</h1><h1>Score: ${score}</h1>!!`)
+        }, 1500)
+        setTimeout(() => {
+            location.reload()
+        }, 3000);
+    }
+    if (Number((xx4.slice(0, -2)) == 100) && (Number(m4.style.height.slice(0, -2)) > y)) {
+        setTimeout(() => {container.style.backgroundColor = 'red'}, 500)
+        setTimeout(() => {
+            document.write(`<h1>YOU LOSS</h1><h1>Score: ${score}</h1>!!`)
+        }, 1500)
+        setTimeout(() => {
+            location.reload()
+        }, 3000);
+    }
+
+    y = y + "px";
+    count33 += 1;}
+    ,75)
