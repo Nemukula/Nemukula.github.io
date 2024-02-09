@@ -27,6 +27,9 @@
 .contacting1 input {
     width:80%
 }
+.contacting1 button {
+    display: block;text-align: center;
+}
 a {
     text-decoration: none;color: black;
 }

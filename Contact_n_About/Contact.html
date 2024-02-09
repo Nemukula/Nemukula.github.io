@@ -6,9 +6,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="../Games/css/bootstrap.css">
     <link rel="stylesheet" href="../main.css" >
+    <script>
+        document.getElementById('btn').style.left = window.screen.width*0.6*0.4;
+    </script>
 </head>
 <body>
-    <div class="nav_bar_1"> 
+    <div class="nav_bar_1" style="padding-bottom: 10px;"> 
         <span style="position: absolute;top:2%;left:50%;transform: translate(-50%, -50%);padding-top: 20px;" >BYTHEKULAS</span>
         <span><a href="About.html">About</a></span>
         <span><a href="Contact.html">Contact</a></span>
@@ -20,7 +23,10 @@
         <input type="email" placeholder="Email"><br><br>
         <label for="Message" >Type Message:</label><br>
         <input type="text" placeholder="Your Message"><br><br>
-        <button  class="btn btn-primary"  style="display: block;text-align: center;">Submit</button>
+        <button  class="btn btn-primary"  style="position: relative;left: 35%;" id="btn">Submit</button>
     </form>
+    <script>
+        document.getElementById('btn').style.left = window.screen.width*0.6*0.4;
+    </script>
 </body>
 </html>
