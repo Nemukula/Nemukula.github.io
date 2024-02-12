@@ -1,7 +1,7 @@
 
 var random_indexes = [];
 var random_colors = ['red', 'yellow', 'green', 'blue'];
-var random_indexes2 = ['']
+var random_indexes2 = [];
 
 function finding_random_indexes() {
 
